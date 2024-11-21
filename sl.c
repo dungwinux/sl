@@ -40,8 +40,10 @@
 
 #include <curses.h>
 #include <signal.h>
-#include <unistd.h>
+#include <threads.h>
 #include "sl.h"
+
+#define usleep(x) thrd_sleep(&(struct timespec){.tv_nsec=(x)*1000}, NULL)
 
 void add_smoke(int y, int x);
 void add_man(int y, int x);
